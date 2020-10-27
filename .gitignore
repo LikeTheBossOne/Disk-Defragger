@@ -1,0 +1,7 @@
+.vscode
+*.o
+prob_2.dSYM
+*defrag
+prob_2
+outputter
+outputter.dSYM

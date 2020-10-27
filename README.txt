@@ -1,0 +1,9 @@
+/* apott Aaron Ott, blboss Brendan Boss */
+
+The purpose of Problem 2 was to create a disk defragmenter. This defragmenter would use the file system API as well as simple I/O libraries in order to convert a fragmented disk image into a defragmented one (that which stores files in contiguous data blocks). In order to complete this, one must also recursively order indirect pointers (possibly doubly or triply indirect) to data blocks so that they would be accessed sequentially. Contiguous blocks are much faster to access than fragmented ones, making the job of a defragmenter extremely important.
+We implemented the defragmenter by first modeling the current disk image (provided by the user as the first argument) with data structures for a superblock and inode. These structs were provided by the instructor. Next we started a list of integers that would represent all of the bytes in the data block. We then looped through the direct pointers and recursively through the indirect pointers, incrementing a counter of the data blocks being referenced to make the list ordered. Next we reassembled the free list of data blocks in order so that they might be more easily accessed in the future. Finally, we wrote this all to an output disk (provided by the user as the second argument). We first rewrote the rootblock, then we wrote the superblock with the updated free_block pointer. Next we wrote all of the new inodes. Then we wrote 0's until we reached the start of the data_offset. Then we wrote all of the new data blocks and free blocks. Finally, we wrote 0's until we reached the end of the file size (specified in stat()).
+Note: We used c++ in order to use vectors to simplify list usage and cut down on spaghetti code.
+
+Program Usage: ./prob_2 <input_disk> <output_disk>
+
+This project was completed by Aaron Ott and Brendan Boss.

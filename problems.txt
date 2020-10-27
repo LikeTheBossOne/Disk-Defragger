@@ -1,0 +1,26 @@
+/* apott Aaron Ott, blboss Brendan Boss*/
+
+PROBLEM 1
+
+1)  Open:   1I (root inode)
+            1D (root data)
+            3I (/home inode)
+            3D (/home data)
+            3I (/home/foo inode)
+    Read:   3I (/home/foo inode)
+            3D (/home/foo data)
+
+2)  Create: 1I (root inode)
+            1D (root data)
+            3I (/home inode)
+            3D (/home data)
+            3Bi (bitmap - read and write)
+            3D (/home data)
+            3I (build new file inode)
+            ***** I need to see if number of links are changing *****
+
+3)  ls:     1I (root inode)
+            1D (root data)
+            3I (/home inode)
+            3D (/home data)
+            3I (inodes of foo and bar)
